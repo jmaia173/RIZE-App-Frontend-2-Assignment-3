@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
@@ -5,6 +6,8 @@ import ProductCard from "./components/ProductCard";
 import Footer from "./components/Footer";
 
 function App() {
+  const [cart, setCart] = useState([]);
+
   const products = [
     {
       id: 1,
@@ -46,6 +49,11 @@ function App() {
         "A Cold War-era first-person shooter with a campaign, multiplayer, and Zombies.",
     },
   ];
+
+  const addToCart = (product) => {
+    setCart([...cart, product]);
+    console.log("Added to cart:", product);
+  };
 
   return (
     <div>
