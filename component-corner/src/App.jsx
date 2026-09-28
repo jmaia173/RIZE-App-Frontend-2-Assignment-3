@@ -53,13 +53,15 @@ function App() {
 
   const addToCart = (product) => {
     setCart([...cart, product]);
-    console.log("Added to cart:", product);
+    
   };
 
   // Filters by position so removing one copy doesn't remove duplicates
   const removeFromCart = (indexToRemove) => {
     setCart(cart.filter((_, index) => index !== indexToRemove));
   };
+
+  const cartTotal = cart.reduce((sum, item) => sum + item.price, 0);
 
   return (
     <div>
@@ -84,13 +86,20 @@ function App() {
 
       <div className="cart-section">
         <h2>Your Cart</h2>
-        {cart.map((item, index) => (
-          <CartItem
-            key={index}
-            item={item}
-            onRemove={() => removeFromCart(index)}
-          />
-        ))}
+        {cart.length === 0 ? (
+          <p className="empty-cart">Your cart is empty. Add some games!</p>
+        ) : (
+          <>
+            {cart.map((item, index) => (
+              <CartItem
+                key={index}
+                item={item}
+                onRemove={() => removeFromCart(index)}
+              />
+            ))}
+            <p className="cart-total">Total: ${cartTotal.toFixed(2)}</p>
+          </>
+        )}
       </div>
 
       <Footer
