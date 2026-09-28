@@ -3,6 +3,7 @@ import "./App.css";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import ProductCard from "./components/ProductCard";
+import CartItem from "./components/CartItem";
 import Footer from "./components/Footer";
 
 function App() {
@@ -55,6 +56,11 @@ function App() {
     console.log("Added to cart:", product);
   };
 
+  // Filters by position so removing one copy doesn't remove duplicates
+  const removeFromCart = (indexToRemove) => {
+    setCart(cart.filter((_, index) => index !== indexToRemove));
+  };
+
   return (
     <div>
       <Header storeName="ComponentCorner Games" cartCount={cart.length} />
@@ -72,6 +78,17 @@ function App() {
             key={product.id}
             product={product}
             onAddToCart={addToCart}
+          />
+        ))}
+      </div>
+
+      <div className="cart-section">
+        <h2>Your Cart</h2>
+        {cart.map((item, index) => (
+          <CartItem
+            key={index}
+            item={item}
+            onRemove={() => removeFromCart(index)}
           />
         ))}
       </div>
