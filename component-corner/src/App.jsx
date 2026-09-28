@@ -57,7 +57,7 @@ function App() {
 
   return (
     <div>
-      <Header storeName="ComponentCorner Games" />
+      <Header storeName="ComponentCorner Games" cartCount={cart.length} />
 
       <Hero
         title="Level Up Your Game Library"
