@@ -1,0 +1,37 @@
+/* This was the easiest CSS of the program and i did it by myself */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 16px 32px;
+  background: #1a1a2e;
+  color: #ffffff;
+}
+
+.header .header-title {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #ffffff;
+}
+
+.header .header-nav {
+  display: flex;
+  gap: 24px;
+}
+
+.header .header-nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.header .header-nav a:hover {
+  color: #667eea;
+  border-bottom-color: #667eea;
+}
